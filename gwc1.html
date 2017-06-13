@@ -1,0 +1,325 @@
+<html>
+<head>
+<title> layout</title>
+<!-- Latest compiled and minified CSS -->
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="bootstrap-datepicker.css">
+<link rel="stylesheet" href="main.css">
+
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+</head>
+
+<script>
+
+	 $(function(){
+
+		 $('.dob-datepicker').datepicker({format:'dd-mm-yyyy',startDate:'01-01-1987'});
+
+			var days = $('.doa').val();
+			$('.doc').val(getAlertDate(days))
+
+      $(".client-form").on("submit",function(event){
+				if(!isValid()){
+				   event.preventDefault();
+				}
+			})
+
+			$('.doa').on('change',function(){
+				var days = $(this).val();
+				$('.doc').val(getAlertDate(days))
+			})
+
+
+	 })
+
+	 function isValid(){
+		 if($('.client-name').val().length==0){
+			 $('.client-name-group').addClass('has-error');
+			 $('.client-name-group .error').removeClass('hide');
+			 return false;
+		 }
+
+		 if($('.pan-name').val().length == 0){
+			 $('.pan-name-group').addClass('has-error');
+			 $('.pan-name-group .error').removeClass('hide');
+			 return false;
+		 }
+
+		 if($('.dob-datepicker').val().length == 0){
+			 $('.dob-group').addClass('has-error');
+			 $('.dob-group .error').removeClass('hide');
+			 return false;
+		 }
+
+		 if($('.mob-no').val().length ==0){
+
+			 return false;
+		 }
+
+		 if($('.email-address').val().length ==0){
+			 return false;
+		 }
+
+		 if($('.doc').val().length ==0){
+			 return false;
+		 }
+
+		 return true;
+
+	 }
+
+	 function getAlertDate(day){
+		 var cDate = new Date();
+		 cDate.setDate(cDate.getDate()-day);
+		 return (cDate.getDate()+'/'+(cDate.getMonth()+1)+'/'+cDate.getFullYear());
+	 }
+
+</script>
+
+<body>
+
+<section class="main">
+
+	<section class="header-wrap">
+		<section class="header">
+			<div class="logo"><img src="images/NewLogo (2).png"></div>
+			<h4 ></div>
+		</section>
+	</section>
+
+<div class="content-wrap">
+  <form class="form-login client-form" novalidate>
+  <div class="row">
+    
+    <div class="lb">
+			<div class="client-name-group form-group">
+	 		<label for="clientName tr">Client Name</label>
+	 		<input type="text" class="form-control client-name tr" id="clientName" placeholder="Client Name">
+	 		<span class='error text-danger hide'>Please enter Client Name</span>
+ 			</div>
+		</div>
+
+
+	<div class="lb ">
+			<div class="client-code-group form-group">
+	 		<label for="clientCode">Client Code</label>
+			<input type="text" class="form-control client-code tr" size="12" name="client_code" placeholder="Client Code"   />
+			<span class='error text-danger hide'>Please enter Client Code</span>
+			</div>
+		</div>	
+
+    <div class="lb">
+    		<div class="pan-number-group form-group">
+    		<label for="panNumber ">PAN Number</label>
+	 	 <input type="text" class="form-control pan-name tr" id="panNumber" placeholder="PAN" />
+	 	 <span class='error text-danger hide'>Please enter PAN Name</span>
+			<span class='error hide'>Please enter PAN Name</span>
+		</div>
+  </div>
+</div>
+        <div class="row">
+        <div class="lb">Date Of Birth
+      <input type="text" class="form-control dob-datepicker" name="dt" required placeholder="dd-mm-yyyy" />
+		</div>
+    <div class="lb">
+			Mobile Number
+			<input type="phone" class="form-control mob-no" size="12" name="mobile_no"   />
+		</div>
+    <div class="lb">
+			Email Address
+<input type="email" class="form-control email-address" name="username" placeholder="Email Address" />
+		</div>
+    
+  </div>
+
+        <div class="row">
+        <div class="lb1">Scheme
+			<select class="form-control">
+				<option value="s1" selected="true">Scheme 1</option>
+				<option value="s2">Scheme 2</option>
+				<option value="s3">Scheme 3</option>
+				<option value="s4">Scheme 4</option>
+			</select>
+		</div>
+          <div class="lb1">Date of SIP Commence
+						<input type="text" class="form-control doc" name="dt1"/>
+					</div>
+          <div class="lb1">Date Of Alert
+						<select class="form-control doa">
+						<option value="5">5 days</option>
+						<option value="4">4 days</option>
+						<option value="3">3 days</option>
+						<option value="2">2 days</option>
+						<option value="1">1 day</option>
+						</select>
+					</div>
+		
+        </div>
+
+        <div class="row">
+        	<div class="lb1">Master  Branch			
+			<select class="form-control bo">
+						<option value="">H.O </option>
+						<option value="">Parrys</option>
+						<option value="">T Nagar</option>
+						<option value="">Adyar</option>
+						<option value="">Kodambakkam</option>
+						<option value="">Chetpet</option>
+						<option value="">Velachery</option>
+						<option value="">Bangalore 1</option>
+						<option value="">Bangalore 2</option>
+						<option value="">Bangalore 3</option>
+						<option value="">Hyderabad</option>
+						<option value="">Guntur</option>
+						<option value="">Mumbai</option>
+						<option value="">Cochin</option>
+						<option value="">Trivandarum</option>
+						<option value="">Salem</option>
+						<option value="">Kovai Sakthi Road</option>
+						<option value="">Kovai Trichy Road</option>
+						<option value="">RS Puram</option>
+						<option value="">Pune</option>
+						<option value="">Kolkata</option>
+						<option value="">Ranchi</option>
+						<option value="">Vizag</option>
+						<option value="">Namakkal</option>
+						<option value="">Karur 1</option>
+						<option value="">Karur 2</option>
+						<option value="">Trichy</option>
+						<option value="">Pondy 1</option>
+						<option value="">Pondy 2</option>
+						<option value="">Mysore</option>
+						<option value="">Chetpet</option>
+						<option value="">Velachery</option>
+						<option value="">Bangalore 1</option>
+						<option value="">Bangalore 2</option>
+						<option value="">Bangalore 3</option>
+						</select>
+					</div>
+
+        <div class="lb1">Branch			
+			<select class="form-control mb">
+						<option value="">T Nagar</option>
+						<option value="">Parrys</option>
+						<option value="">Virudhunagar</option>
+						<option value="">Adyar</option>
+						<option value="">Kodambakkam</option>
+						<option value="">Chetpet</option>
+						<option value="">Velachery</option>
+						<option value="">Bangalore 1</option>
+						<option value="">Bangalore 2</option>
+						<option value="">Bangalore 3</option>
+						<option value="">Hyderabad</option>
+						<option value="">Guntur</option>
+						<option value="">Mumbai</option>
+						<option value="">Cochin</option>
+						<option value="">Trivandarum</option>
+						<option value="">Salem</option>
+						<option value="">Kovai Sakthi Road</option>
+						<option value="">Kovai Trichy Road</option>
+						<option value="">RS Puram</option>
+						<option value="">Pune</option>
+						<option value="">Kolkata</option>
+						<option value="">Ranchi</option>
+						<option value="">Vizag</option>
+						<option value="">Namakkal</option>
+						<option value="">Karur 1</option>
+						<option value="">Karur 2</option>
+						<option value="">Trichy</option>
+						<option value="">Pondy 1</option>
+						<option value="">Pondy 2</option>
+						<option value="">Mysore</option>
+						<option value="">Chetpet</option>
+						<option value="">Velachery</option>
+						<option value="">Bangalore 1</option>
+						<option value="">Bangalore 2</option>
+						<option value="">Bangalore 3</option>
+						</select>
+					</div>
+					
+					<div class="lb1">Sub Branch			
+			<select class="form-control sb">
+						<option value="">GB1AB1</option>
+						<option value="">Parrys</option>
+						<option value="">T Nagar</option>
+						<option value="">Adyar</option>
+						<option value="">Kodambakkam</option>
+						<option value="">Chetpet</option>
+						<option value="">Velachery</option>
+						<option value="">Bangalore 1</option>
+						<option value="">Bangalore 2</option>
+						<option value="">Bangalore 3</option>
+						<option value="">Hyderabad</option>
+						<option value="">Guntur</option>
+						<option value="">Mumbai</option>
+						<option value="">Cochin</option>
+						<option value="">Trivandarum</option>
+						<option value="">Salem</option>
+						<option value="">Kovai Sakthi Road</option>
+						<option value="">Kovai Trichy Road</option>
+						<option value="">RS Puram</option>
+						<option value="">Pune</option>
+						<option value="">Kolkata</option>
+						<option value="">Ranchi</option>
+						<option value="">Vizag</option>
+						<option value="">Namakkal</option>
+						<option value="">Karur 1</option>
+						<option value="">Karur 2</option>
+						<option value="">Trichy</option>
+						<option value="">Pondy 1</option>
+						<option value="">Pondy 2</option>
+						<option value="">Mysore</option>
+						<option value="">Chetpet</option>
+						<option value="">Velachery</option>
+						<option value="">Bangalore 1</option>
+						<option value="">Bangalore 2</option>
+						<option value="">Bangalore 3</option>
+						</select>
+					</div>
+					</div>
+        <div class="row">
+        	<div class="lb1">Employee Code			
+			<select class="form-control co">
+						<option value="">11111</option>
+						<option value="">11112</option>
+						<option value="">11113</option>
+						<option value="">11114</option>
+						<option value="">11115</option>
+						<option value="">11116</option>
+						<option value="">11117</option>
+						<option value="">11118</option>
+						<option value="">11119</option>
+						<option value="">11120</option>
+						<option value="">11121</option>
+						<option value="">11122</option>
+						</select>
+        	</div>
+        </div>
+
+        <div class="row">
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+
+        </form>
+
+  </div>
+</div>
+
+
+		<section class="footer-wrap">
+				<section class="footer"></section>
+			</section>
+	</section>
+
+
+	</section>
+	</body>
+	</html>
